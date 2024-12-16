@@ -1,0 +1,163 @@
+					
+						Angular Commands 
+                                           __________________________
+
+Prabhav Khalya 1101242
+
+
+					*************
+					   Gen- CMD
+					*************
+
+
+******
+ng new <project>	                 Creates a new Angular project.
+ng serve	                         Builds the project and serves it on a local development server.
+ng build	                         Builds the project and outputs the files to the dist/ directory.
+ng test	Runs                             unit tests using Karma and Jasmine.
+ng e2e	Runs                             end-to-end tests using Protractor.
+ng generate component <name>	         Generates a new component.
+ng generate service <name>	         Generates a new service.
+ng generate pipe <name>	                 Generates a new pipe.
+ng generate directive <name>	         Generates a new directive.
+ng generate module <name>	         Generates a new module.
+ng generate guard <name>	         Generates a new guard.
+ng generate interceptor <name>	         Generates a new HTTP interceptor.
+ng generate universal <name>	         Generates a new Universal application.
+ng lint	                                 Lints the project files.
+ng update	                         Updates the project and its dependencies to the latest version.
+ng doc	                                 Displays documentation for a given command or Angular feature.
+****************
+
+
+#################################################################################################################
+
+						*************
+						Change Version 
+						**************
+
+ng --version
+npm uninstall -g @angular/cli
+npm cache clean --force
+npm install -g @angular/cli@16
+ng --version
+
+
+#################################################################################################################
+
+
+						*************
+						 BootStraps
+						**************	
+Step 1.
+npm install bootstrap --save
+npm install jquery --save
+
+
+line No. 27 in angular.json file 
+Step 2.
+copy following path in angular.json file in Styles[] array 
+"node_modules/bootstrap/dist/css/bootstrap.min.css"
+
+Step 3.
+Scripts[] me ye daalo "node_modules/jquery/dist/jquery.min.js",
+            "node_modules/bootstrap/dist/js/bootstrap.min.js"
+
+step 4.
+make an component 
+ng g c prabhav --skip-tests
+
+
+Step 5.
+
+app.component.html 
+
+
+Route link to Nav bar 
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+  <a class="navbar-brand" routerLink="home">Routing Demo</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav">
+  <li class="nav-item">
+  <a class="nav-link active"  aria-current="page" routerLink="home">Home</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link active"  aria-current="page" routerLink="aboutus">About Us</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active"  aria-current="page" routerLink="one">One way bindling</a>
+    </li>
+<li class="nav-item">
+    <a class="nav-link active"  aria-current="page" routerLink="Prabhav">Prabhav</a>
+    </li>
+  </ul>
+  </div>
+  </div>
+  </nav>
+
+
+Step 6.
+give route in app-routing.module.ts inside the src folder 
+line No. 8
+const routes: Routes = [
+  {path:"",redirectTo:"home",pathMatch:"full"},
+
+  {path:"home",component:HomeComponent},
+  {path:"aboutus",component:AboutUsComponent},
+  {path:"one",component:OnewaybindingComponent},
+
+  {path:"**",component:PagenotfoundComponent}
+];
+
+
+**************************
+must to add at end  with out this cnat be route 
+
+important
+  <router-outlet></router-outlet>
+
+**************************
+
+
+#################################################################################################################
+
+  					     **************
+						Error 1
+                                       ************************
+
+
+when you create an model and which you have decalred an class it will give you error 
+
+add line no 17
+for remove error from {export class name of your class} 
+In File config.json 
+ADD
+
+"strictPropertyInitialization": false,
+
+
+
+
+#################################################################################################################
+
+					     **************
+						Error 2
+                                       ************************
+
+add this to
+
+app.module.ts
+Add to line number 15 for remove error for [*ng models]
+
+imports: [
+    BrowserModule,
+    AppRoutingModule,FormsModule,ReactiveFormsModule
+  ],
+
+
+#################################################################################################################

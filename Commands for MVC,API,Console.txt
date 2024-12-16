@@ -1,0 +1,174 @@
+
+
+				            DOTNET COMMANDS
+                                     ******************************
+
+
+	_____________________________________________________________________________________________				
+
+
+
+Prabhav Khalya 1101242
+
+
+
+step 1 
+
+add nuget packages 
+1Microsoft.EntityFrameworkCore
+2Microsoft.EntityFrameworkCore.Design
+3Microsoft.EntityFrameworkCore.SqlServer
+
+
+command 
+Install-Package Microsoft.EntityFrameworkCore
+
+dotnet add package Microsoft.EntityFrameworkCore --version 5.0.17
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 5.0.17
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 5.0.17
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet add package Microsoft.EntityFrameworkCore.Sqllite
+dotnet add package Microsoft.AspNetCore.Authorization
+
+
+
+
+ Generate View Using Command
+dotnet tool install -g dotnet-aspnet-codegenerator
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 5.0.2
+
+####################################################################################################################
+step 2 
+
+write this in appsettings .json
+ "ConnectionStrings": {
+
+    "MyConStr": "server=localhost;database=YashDB;Trusted_Connection=True;"
+
+  }
+ 
+******************************************
+"ConnectionStrings": {
+    "MyConStr": "Server=YISC1101242LT\\SQLEXPRESS;Database=demo1;Trusted_Connection=True;TrustServerCertificate=True;"
+  }
+*************************************
+trustservercertificate=true;
+ ####################################################################################################################
+Step 3 :Add AppDbContext class in models Folder
+
+public class AppDbContext: DbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext>options) : base(options){ }
+        public DbSet<Model1> model{ get; set;}
+        public DbSet<Model2> Model2{get; set;}
+        
+    }
+ 
+####################################################################################################################
+ Step 4 : add dependency in StartUp calls in ConfigureServices()
+ 
+services.AddDbContext<AppDbContext>(item =>
+
+            item.UseSqlServer(Configuration.GetConnectionString("MyConStr")));
+
+
+******************************
+var connectionString = builder.Configuration.GetConnectionString("MyConstr") ?? throw new InvalidOperationException("Connection string 'AppDBContextConnection' not found.");
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+	options.UseSqlServer(connectionString));
+ 
+####################################################################################################################
+
+ Generate View Using Command
+
+dotnet tool install -g dotnet-aspnet-codegenerator
+
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 5.0.2
+
+/* dotnet aspnet-codegenerator view List List -m Student  -outDir Views/Student -udl -scripts */
+ 
+////dotnet aspnet-codegenerator view Login Empty -outDir Views/Home -udl -scripts
+
+####################################################################################################################
+						MVC app
+
+
+
+dotnet new mvc -o PrabhavWVC_App -f net8.0 --no-https
+
+identity Db context
+dotnet new mvc -o MyMvcApp --auth Individual
+
+
+
+####################################################################################################################
+
+						web api
+
+
+dotnet new webapi -n WebApiFlight_Example --use-minimal-apis false
+
+
+for adding refrence to the mvc to webapi intrigation: dotnet add package Newtonsoft.Json
+
+
+
+####################################################################################################################
+
+
+					  WEB api {Json web token} 
+                                    ---------------------------------
+
+
+
+adding nue get package 
+
+header : algo for encrp
+payload : claim name , role etc
+signatur : secrat key
+
+
+example for 
+jwt.io
+
+
+
+
+
+####################################################################################################################
+
+
+
+						DLL dotnet 
+
+
+dotnet new classlib -n YourLibraryName
+
+dotnet add reference {address of the dll file which you can copy from the right click on the} 
+
+
+
+
+####################################################################################################################
+
+
+						Testing 
+                                        -----------------------
+
+
+dotnet new nunit -o YourTestProjectName
+
+dotnet new xunit -o YourTestProjectName
+
+package 
+MOQ
+xunit
+nunit
+
+
+
+####################################################################################################################
+
+
+ 

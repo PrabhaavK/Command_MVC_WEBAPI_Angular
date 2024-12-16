@@ -1,0 +1,22 @@
+   						ANGULAR COMMANDS
+                                          ________________________________
+
+
+
+Prabhav Khalya 1101242
+
+
+****
+
+1. tsc (name of file with extention)
+2.Node (tsc created an js file give that file name) 
+
+
+********
+
+
+
+
+
+
+###############################################################################################################
